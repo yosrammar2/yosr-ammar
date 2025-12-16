@@ -1,0 +1,37 @@
+<div class="container">
+  <h1 class="text-center mt-3">Liste des Utilisateurs</h1>
+  <br />
+
+  <a routerLink="/users/add" class="btn btn-primary mb-3">
+    Ajouter un Utilisateur
+  </a>
+
+  <div class="card mb-3" *ngFor="let user of users">
+    <div class="card-body">
+      <h5 class="card-title">{{ user.name }}</h5>
+      <h6 class="text-primary">{{ user.email }}</h6>
+
+      <p class="mb-1"><strong>Rôle :</strong> {{ user.role }}</p>
+      <p class="mb-1"><strong>Status :</strong> {{ user.status }}</p>
+
+      <button
+        class="btn btn-info me-2"
+        [routerLink]="['/users/details', user.id]"
+      >
+        Détails
+      </button>
+
+      <button
+        class="btn btn-warning me-2"
+        [routerLink]="['/users/update', user.id]"
+      >
+        Mettre à jour
+      </button>
+
+      <button class="btn btn-danger" (click)="deleteUser(user.id!)">
+        Supprimer
+      </button>
+    </div>
+  </div>
+</div>
+
